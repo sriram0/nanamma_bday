@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Happy Birthday Nanamma!</title>
+    <style>
+        h1{
+            color: white;
+        }
+        body{
+            background-color: lightgray;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Happy 62<sup>nd</sup> Birthday Nanamma!</h1>
+    <canvas id="canv" width="500" height="500"></canvas><br>
+    62 is the 22<sup>nd</sup> semiprime number<br>
+    62 is the sum of 4 consecutive numbers (14, 15, 16 and 17)<br>
+    62 is the 20<sup>th</sup> and 21<sup>st</sup> digits of pi
+</body>
+<script>
+    const canv = document.getElementById("canv")
+    const ctx = canv.getContext("2d")
+    let t = 1;
+    let b = [Math.random() * 100, Math.random() * 2, Math.random() * 2, Math.random() * 50 + 100, Math.random() * 50 + 100, Math.random(), Math.random(), Math.random() * 50 + 150, Math.random() * 50 + 150, Math.random() * 50 + 100, Math.random(), Math.random(), Math.random() * 50 + 150, Math.random() * 50 + 150]
+    let f = [`rgb(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255})`, `rgb(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255})`, `rgb(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255})`, `rgb(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255})`]
+
+    console.log(b)
+    setInterval(function () {
+        ctx.fillStyle = "aqua"
+        ctx.fillRect(0, 0, 500, 500)
+        ctx.fillStyle = "lightgreen"
+        ctx.fillRect(0, 400, 500, 500)
+        t += 5;
+        ctx.lineWidth = 10;
+        ctx.strokeStyle = "rgb(0,205,00)";
+        ctx.beginPath();
+        ctx.moveTo(250, 400);
+        ctx.lineTo(250, 400 - Math.min(t, b[0]));
+        ctx.closePath();
+        ctx.stroke();
+        if (t > b[0]) {
+            ctx.beginPath();
+            ctx.moveTo(250, 400 - b[0]);
+            ctx.lineTo(250 + ((Math.min(t, b[3]) - b[0]) * b[1]), 400 - Math.min(t, b[3]));
+            ctx.closePath();
+            ctx.stroke();
+
+            if (t > b[3]) {
+                ctx.beginPath();
+                ctx.moveTo(250 + ((b[3] - b[0]) * b[1]), 400 - b[3]);
+                ctx.lineTo(250 + ((b[3] - b[0]) * b[1]) + ((Math.min(t, b[7]) - b[3]) * b[5]), 400 - Math.min(t, b[7]));
+                ctx.closePath();
+                ctx.stroke();
+
+                if (t > b[7]) {
+                    ctx.fillStyle = f[0]
+                    ctx.beginPath();
+                    ctx.arc(250 + ((b[3] - b[0]) * b[1]) + ((b[7] - b[3]) * b[5]), 400 - b[7], 10, 0, Math.PI)
+                    ctx.lineTo(250 + ((b[3] - b[0]) * b[1]) + ((b[7] - b[3]) * b[5]) - 10, 400 - b[7] - 20)
+                    ctx.lineTo(250 + ((b[3] - b[0]) * b[1]) + ((b[7] - b[3]) * b[5]), 400 - b[7] - 10)
+                    ctx.lineTo(250 + ((b[3] - b[0]) * b[1]) + ((b[7] - b[3]) * b[5]) + 10, 400 - b[7] - 20)
+                    ctx.closePath();
+                    ctx.fill()
+                }
+
+                ctx.beginPath();
+                ctx.moveTo(250 + ((b[3] - b[0]) * b[1]), 400 - b[3]);
+                ctx.lineTo(250 + ((b[3] - b[0]) * b[1]) - ((Math.min(t, b[8]) - b[3]) * b[6]), 400 - Math.min(t, b[8]));
+                ctx.closePath();
+                ctx.stroke();
+
+                if (t > b[8]) {
+                    ctx.fillStyle = f[1]
+                    ctx.beginPath();
+                    ctx.arc(250 + ((b[3] - b[0]) * b[1]) - ((b[8] - b[3]) * b[6]), 400 - b[8], 10, 0, Math.PI)
+                    ctx.lineTo(250 + ((b[3] - b[0]) * b[1]) - ((b[8] - b[3]) * b[6]) - 10, 400 - b[8] - 20)
+                    ctx.lineTo(250 + ((b[3] - b[0]) * b[1]) - ((b[8] - b[3]) * b[6]), 400 - b[8] - 10)
+                    ctx.lineTo(250 + ((b[3] - b[0]) * b[1]) - ((b[8] - b[3]) * b[6]) + 10, 400 - b[8] - 20)
+                    ctx.closePath();
+                    ctx.fill()
+                }
+            }
+
+            ctx.beginPath();
+            ctx.moveTo(250, 400 - b[0]);
+            ctx.lineTo(250 - ((Math.min(t, b[4]) - b[0]) * b[2]), 400 - Math.min(t, b[4]));
+            ctx.closePath();
+            ctx.stroke();
+
+            if (t > b[4]) {
+                ctx.beginPath();
+                ctx.moveTo(250 - ((b[4] - b[0]) * b[2]), 400 - b[4]);
+                ctx.lineTo(250 - ((b[4] - b[0]) * b[2]) + ((Math.min(t, b[12]) - b[4]) * b[10]), 400 - Math.min(t, b[12]));
+                ctx.closePath();
+                ctx.stroke();
+
+                if (t > b[12]) {
+                    ctx.fillStyle = f[2]
+                    ctx.beginPath();
+                    ctx.arc(250 - ((b[4] - b[0]) * b[2]) + ((b[12] - b[4]) * b[10]), 400 - b[12], 10, 0, Math.PI)
+                    ctx.lineTo(250 - ((b[4] - b[0]) * b[2]) + ((b[12] - b[4]) * b[10]) - 10, 400 - b[12] - 20)
+                    ctx.lineTo(250 - ((b[4] - b[0]) * b[2]) + ((b[12] - b[4]) * b[10]), 400 - b[12] - 10)
+                    ctx.lineTo(250 - ((b[4] - b[0]) * b[2]) + ((b[12] - b[4]) * b[10]) + 10, 400 - b[12] - 20)
+                    ctx.closePath();
+                    ctx.fill()
+                }
+
+                ctx.beginPath();
+                ctx.moveTo(250 - ((b[4] - b[0]) * b[2]), 400 - b[4]);
+                ctx.lineTo(250 - ((b[4] - b[0]) * b[2]) - ((Math.min(t, b[13]) - b[4]) * b[11]), 400 - Math.min(t, b[13]));
+                ctx.closePath();
+                ctx.stroke();
+
+                if (t > b[13]) {
+                    ctx.fillStyle = f[3]
+                    ctx.beginPath();
+                    ctx.arc(250 - ((b[4] - b[0]) * b[2]) - ((b[13] - b[4]) * b[11]), 400 - b[13], 10, 0, Math.PI)
+                    ctx.lineTo(250 - ((b[4] - b[0]) * b[2]) - ((b[13] - b[4]) * b[11]) - 10, 400 - b[13] - 20)
+                    ctx.lineTo(250 - ((b[4] - b[0]) * b[2]) - ((b[13] - b[4]) * b[11]), 400 - b[13] - 10)
+                    ctx.lineTo(250 - ((b[4] - b[0]) * b[2]) - ((b[13] - b[4]) * b[11]) + 10, 400 - b[13] - 20)
+                    ctx.closePath();
+                    ctx.fill()
+                }
+            }
+        }
+    }, 100)
+</script>
+
+</html>
